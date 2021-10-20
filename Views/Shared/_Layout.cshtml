@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <h1>PCAD2 Bank</h1>
+    <nav>
+        @* 1st param is name on link, 2nd param is action method, 3rd param is controller*@
+        <span>
+            <a asp-action="Index" asp-controller="Customer">Manage Customers</a>
+        </span>
+        <span>
+            <a asp-action="About" asp-controller="Home">Meet the Team</a>
+        </span>
+        <span>
+            <a asp-action="Contact" asp-controller="Home">Contact Us</a>
+        </span>
+        <span>
+            <a asp-action="AllEmployees" asp-controller="Employee">Display Employees</a>
+        </span>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <span>
+                <a asp-action="Logout" asp-controller="Account">Logout</a>
+            </span>
+        }
+        else
+        {
+            <span>
+                <a asp-action="Login" asp-controller="Account">Login</a>
+            </span>
+        }
+    </nav>
+
+    @RenderBody();
+    @RenderSection("footer", false);
+
+</body>
+</html>
